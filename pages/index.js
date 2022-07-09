@@ -9,7 +9,7 @@ function Home() {
   return ( 
     <Box>
       <Box width='100vw'>
-        <Box bg='yellow'>
+        <Box>
           <Image src='/intro_house.jpg' alt='' width='100vw' height='400px' objectFit='cover' />
         </Box>
         <Flex flexDirection='column' justifyContent='center' alignItems='center' bg='#262638' width='800px' borderRadius='5px' position='absolute' top='430px' right='50%' transform='translate(50%,-50%)'>
