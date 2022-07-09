@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Flex, Box, Text, Icon } from '@chakra-ui/react';
+import { Flex, Box, Text, Icon, useColorMode } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
 import SearchFilters from '../components/SearchFilters';
 import Property from '../components/Property';
@@ -13,12 +13,13 @@ const Search = ({ properties }) => {
   const [searchFilters, setSearchFilters] = useState(false);
   const router = useRouter();
 
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return(
     <Box>
       <Flex
         cursor='pointer'
-        bg='gray.100'
-        borderBottom='1px'
+        bg={ colorMode === 'light' ? 'gray.100' : 'gray.700' }
         borderColor='gray.200'
         p='2'
         fontWeight='bold'
@@ -31,10 +32,12 @@ const Search = ({ properties }) => {
         <Icon paddingLeft='2' w='7' as={BsFilter} />
       </Flex>
       {searchFilters && <SearchFilters />}
-      <Text fontSize='2xl' p='4' fontWeight='bold'>
-        Properties {router.query.purpose}
-      </Text>
-      <Flex flexWrap='wrap'>
+      <Flex alignItems='center' justifyContent='center' bg={ colorMode === 'light' ? 'green.200' : 'green.900' } height='42px' mb='30px'>
+        <Text fontSize='xl' p='4' fontWeight='bold'>
+          Properties {router.query.purpose}
+        </Text>
+      </Flex>
+      <Flex flexWrap='wrap' justifyContent='center' alignItems='center'>
         {properties.map(property => <Property property={property} key={property.id} /> )}
       </Flex>
       {properties.length === 0 && (

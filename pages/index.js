@@ -1,62 +1,50 @@
+import React from 'react';
+import { Box, Flex, Text, Button, Image, Divider, useColorMode } from '@chakra-ui/react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Flex, Box, Text, Button } from '@chakra-ui/react';
-import { baseUrl, fetchApi } from '../utils/fetchApi';
-import Property from '../components/Property';
 
-const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, linkName, imageUrl }) => (
-  <Flex flexWrap='wrap' justifyContent='center' alignItems='center' m='10'>
-    <Image src={imageUrl} width={500} height={300} alt='banner' />
-    <Box p='5'>
-      <Text color='gray.500' fontSize='sm' fontWeight='medium'>{purpose}</Text> 
-      <Text fontSize='3xl' fontWeight='bold'>{title1}<br />{title2}</Text> 
-      <Text fontSize='lg' pt={3} pb={3} color='gray.700'>{desc1}<br />{desc2}</Text> 
-      <Button fontSize='xl'>
-        <Link href={linkName}>{buttonText}</Link>
-      </Button>
-    </Box>
-  </Flex>
-);
-export default function Home({ propertiesForSale, propertiesForRent }) {
-  return (
+function Home() {
+
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  return ( 
     <Box>
-      <Banner
-        purpose={'For sale'}
-        title1='Rental Homes for' 
-        title2='Everyone'
-        desc1='Explore Apartments, Villas, Homes'
-        desc2='and more'
-        buttonText='Explore Renting'
-        linkName='/search?purpose=for-rent'
-        imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4'
-      />
-      <Flex flexWrap='wrap'>
-        {propertiesForRent.map((property) => <Property property={property} key={property.id} /> )}
-      </Flex>
-      <Banner
-        purpose={'Buy a home'}
-        title1='Find, Buy and Own your' 
-        title2='Dream home'
-        desc1='Explore Apartments, Villas, Homes'
-        desc2='and more'
-        buttonText='Explore Buying'
-        linkName='/search?purpose=for-rent'
-        imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4'
-      />
-      <Flex flexWrap='wrap'>
-        {propertiesForSale.map((property) => <Property property={property} key={property.id} /> )}
+      <Box width='100vw'>
+        <Box bg='yellow'>
+          <Image src='/intro_house.jpg' alt='' width='100vw' height='400px' objectFit='cover' />
+        </Box>
+        <Flex flexDirection='column' justifyContent='center' alignItems='center' bg='#262638' width='800px' borderRadius='5px' position='absolute' top='430px' right='50%' transform='translate(50%,-50%)'>
+          <Text fontSize='3xl' color={ colorMode === 'light' ? 'green.200' : 'green.600' } m='30px 0 5px 0'>Find Your Property</Text> 
+          <Text fontSize='xl' color='white'>Explore properties for sale and to rent</Text>
+          <Link href='/search?purpose=for-sale' passHref>
+            <Button bg={ colorMode === 'light' ? 'green.200' : 'green.600' } width='220px' m='30px 0 10px 0'>I want to rent a property</Button>
+          </Link>
+          <Link href='/search?purpose=for-rent' passHref>
+            <Button bg={ colorMode === 'light' ? 'green.200' : 'green.600' } width='220px' m='0 0 40px 0'>I want to buy a property</Button>
+          </Link>
+        </Flex>
+      </Box>
+      <Flex mt='200px' mb='100px' flexDirection='column' alignItems='center' gap='100px'>
+        <Flex gap='50px' alignItems='center'>
+          <Image src='intro_sale.jpeg' alt='' width='500px' height='300px' objectFit='cover' boxShadow='-10px -10px' />
+          <Flex flexDirection='column'>
+            <Text fontSize='xl' fontWeight='bold'>BUY</Text>
+            <Divider />
+            <Text fontSize='3xl' fontWeight='bold'>Find your new home for sale on Moving</Text>
+            <Text width='700px' fontSize='lg' mt='20px'>Listing an extensive range of houses, flats, bungalows, land and retirement homes, Moving makes it easy for you to find your next happy home regardless of whether you are a first-time buyer, upsizing, downsizing or relocating.</Text>
+          </Flex>
+        </Flex>
+        <Flex gap='50px' alignItems='center'>
+          <Flex flexDirection='column'>
+            <Text fontSize='xl' fontWeight='bold'>RENT</Text>
+            <Divider />
+            <Text fontSize='3xl' fontWeight='bold'>Find your new home for rent on Moving</Text>
+            <Text width='700px' fontSize='lg' mt='20px'>Listing a wide range of property types and styles, we cover everything from student lettings, to studio flats, detached family homes and even luxury Mayfair penthouses.</Text>
+          </Flex>
+          <Image src='intro_rent.webp' alt='' width='500px' height='300px' objectFit='cover' boxShadow='10px 10px' />
+        </Flex>
       </Flex>
     </Box>
-  )
+  );
 }
 
-export const getStaticProps = async () => {
-  const propertyForSale = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`)
-  const propertyForRent = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`)
-  return {
-    props: {
-      propertiesForSale: propertyForSale?.hits,
-      propertiesForRent: propertyForRent?.hits,
-    }
-  }
-}
+export default Home;

@@ -1,15 +1,15 @@
 import Head from 'next/head';
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <Box>
     <Head>
-      <title>Real Estate</title>
+      <title>Moving</title>
     </Head>
-    <Box maxWidth='1280px' m='auto'>
-      <header>
+    <Box m='auto'>
+      <header style={{ maxWidth: '1280px', margin: 'auto' }}>
         <Navbar />
       </header>
       <main>
