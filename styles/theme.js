@@ -3,8 +3,14 @@ import { extendTheme } from '@chakra-ui/react'
 const config = {
   initialColorMode: 'light',
   useSystemColorMode: true,
-}
+};
 
-const theme = extendTheme({ config })
+const breakpoints = {
+  sm: '400px',
+  md: '700px',
+  lg: '1300px',
+};
 
-export default theme
+const theme = extendTheme({ config, breakpoints });
+
+export default theme;
