@@ -16,7 +16,7 @@ function Home() {
     <Box>
       <Box width='100vw'>
         <Box>
-          <Image src='/intro_house.jpg' alt='' width='100vw' height='400px' objectFit='cover' />
+          <Image src='/intro_house.webp' alt='' width='100vw' height='400px' objectFit='cover' />
         </Box>
         <Flex flexDirection='column' justifyContent='center' alignItems='center' bg='#262638' width={{ base: '300px', sm: '400px', md: '500px', lg: '800px' }} borderRadius='5px' position='absolute' top='430px' right='50%' transform='translate(50%,-50%)'>
           <Text fontSize={{ base: 'lg', sm: 'xl', md: '2xl', lg: '3xl' }} color={ colorMode === 'light' ? 'green.200' : 'green.600' } m='30px 0 5px 0'>Find Your Property</Text> 
@@ -32,7 +32,7 @@ function Home() {
       <Flex mt='200px' mb='100px' flexDirection='column' alignItems='center' gap='100px'>
         { isLessThan1300px ? 
           <Flex gap='50px' alignItems='center' flexDirection='column'>
-            <Image src='intro_sale.jpeg' alt='' width={{ base: '300px', sm: '380px', md: '460px', lg: '500px' }} height={{ base: '200px', sm: '240px', md: '280px', lg: '300px' }} objectFit='cover' boxShadow='-10px -10px' />
+            <Image src='intro_sale.webp' alt='' width={{ base: '300px', sm: '380px', md: '460px', lg: '500px' }} height={{ base: '200px', sm: '240px', md: '280px', lg: '300px' }} objectFit='cover' boxShadow='-10px -10px' />
             <Flex flexDirection='column'>
               <Text fontSize={{ base: 'sm', sm: 'md', md: 'lg', lg: 'xl' }} fontWeight='bold'>BUY</Text>
               <Divider />
@@ -42,7 +42,7 @@ function Home() {
           </Flex>
           :
           <Flex gap='50px' alignItems='center'>
-            <Image src='intro_sale.jpeg' alt='' width='500px' height='300px' objectFit='cover' boxShadow='-10px -10px' />
+            <Image src='intro_sale.webp' alt='' width='500px' height='300px' objectFit='cover' boxShadow='-10px -10px' />
             <Flex flexDirection='column'>
               <Text fontSize='xl' fontWeight='bold'>BUY</Text>
               <Divider />
