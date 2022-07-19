@@ -9,7 +9,7 @@ import ImageScrollBar from '../../components/IamgeScrollBar';
 import { useColorMode } from '@chakra-ui/react';
 
 
-const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms ,title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, amenities, photos } }) => {
+const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms ,title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, photos } }) => {
 
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -49,18 +49,6 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms ,title
         </Flex>
       )}
     </Flex>
-    {/* <Box>
-      {amenities.length && <Text fontSize='2xl' fontWeight='black' marginTop='5'>Facilites:</Text>}
-        <Flex flexWrap='wrap'>
-          {amenities?.map((item) => (
-              item?.amenities?.map((amenity) => (
-                <Text key={amenity.text} fontWeight='bold' color='blue.400' fontSize='l' p='2' bg='gray.200' m='1' borderRadius='5'>
-                  {amenity.text}
-                </Text>
-              ))
-          ))}
-        </Flex>
-    </Box> */}
   </Box>
 )};
 

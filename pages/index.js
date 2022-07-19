@@ -8,8 +8,6 @@ function Home() {
 
   const { colorMode, toggleColorMode } = useColorMode();
 
-  // const [isLessThan400px] = useMediaQuery('(max-width: 400px)');
-  // const [isLessThan700px] = useMediaQuery('(max-width: 700px');
   const [isLessThan1300px] = useMediaQuery('(max-width: 1300px)');
 
   return ( 
